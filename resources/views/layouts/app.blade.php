@@ -52,6 +52,7 @@
                                 </li>
                             @endif
                         @else
+                            <a class="nav-link" href="{{ route('upload.index') }}">{{ __('Upload') }}</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -66,7 +67,7 @@
                                     @can('manage-users')
                                     <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                         User Management
-                                </a>
+                                    </a>
                                     @endcan
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

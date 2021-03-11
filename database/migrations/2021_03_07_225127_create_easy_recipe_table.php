@@ -17,6 +17,7 @@ class CreateEasyRecipeTable extends Migration
             $table->id();
             $table->string('name');
             $table->binary('images');
+            $table->string('time');
             $table->string('ingredients');
             $table->string('directions');
 

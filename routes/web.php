@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::resource('/upload','App\Http\Controllers\Upload\PostController');
 //Route::resource('/admin/users', 'App\Http\Controllers\Admin\UsersController', ['except'=>['show', 'create', 'store']]);
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function (){
