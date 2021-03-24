@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 @extends('layouts.app')
 
 @section('content')
@@ -8,7 +12,7 @@
                     <div class="card-header">{{ __('Upload') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('upload.store') }}">
+                        <form method="POST" action="{{ route('upload.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -29,7 +33,7 @@
                                 <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="file" id="myFile" name="filename">
+                                    <input type="file" id="myFile" name="images">
 
                                     @error('imageController')
                                     <span class="invalid-feedback" role="alert">
@@ -84,7 +88,7 @@
                                 <label for="difficulty" class="col-md-4 col-form-label text-md-right">{{ __('Difficulty of Dish') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="Difficulty" id="difficulty">
+                                    <select name="difficulty" id="difficulty">
                                         <option value="beginner">Beginner</option>
                                         <option value="intermediate">Intermediate</option>
                                         <option value="advanced">Advanced</option>
@@ -102,8 +106,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Upload
-                                    </button>
+                                    <button type="submit" class="btn btn-primary">Upload</button>
                                 </div>
                             </div>
                         </form>

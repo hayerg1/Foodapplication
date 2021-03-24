@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEasyRecipeTable extends Migration
+class CreateRecipeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +14,20 @@ class CreateEasyRecipeTable extends Migration
      */
     public function up()
     {
-        Schema::create('easy_recipe', function (Blueprint $table) {
+        Schema::create('recipe', function (Blueprint $table) {
+
             $table->id();
             $table->string('name');
-            $table->binary('images');
             $table->string('time');
             $table->string('ingredients');
             $table->string('directions');
+            $table->string('difficulty');
+            $table->string('approved');
+
 
             $table->timestamps();
         });
+        DB::statement('ALTER TABLE recipe ADD COLUMN images LONGBLOB DEFAULT NULL');
     }
 
     /**

@@ -40,6 +40,20 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+{{--                     <div class="dropdown">--}}
+{{--                         <button class="dropbtn">Difficulty</button>--}}
+{{--                            <li class="nav-item dropdown">--}}
+{{--                            <a class="dropdown-item" href="{{ route('easy') }}">--}}
+{{--                                Easy--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item" href="{{ route('intermediate') }}">--}}
+{{--                                Intermediate--}}
+{{--                            </a>--}}
+{{--                            <a class="dropdown-item" href="{{ route('intermediate') }}">--}}
+{{--                                Advanced--}}
+{{--                            </a>--}}
+{{--                            </li>--}}
+{{--                     </div>--}}
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -51,10 +65,12 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                                <input type="text" placeholder="Search">
+
                         @else
                             <a class="nav-link" href="{{ route('upload.index') }}">{{ __('Upload') }}</a>
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -68,6 +84,9 @@
                                     <a class="dropdown-item" href="{{ route('admin.users.index') }}">
                                         User Management
                                     </a>
+                                        <a class="dropdown-item" href="{{ route('admin.requests.index') }}">
+                                            Pending Requests
+                                        </a>
                                     @endcan
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -82,8 +101,10 @@
 
         <main class="py-4">
             <div class="container">
+                <div id="background">
             @include('partials.alerts')
             @yield('content')
+                </div>
             </div>
         </main>
     </div>

@@ -20,7 +20,7 @@ class UsersTablesSeeder extends Seeder
     public function run()
     {
         Schema::disableForeignKeyConstraints();
-        Role::truncate();
+        User::truncate();
         Schema::enableForeignKeyConstraints();
 
         DB::table('role_user')->truncate();
