@@ -17,6 +17,14 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+         $request->validate([
+            'name' => 'required|unique:recipe|max:255',
+            'images' => 'required|mimes:png,jpeg,bmp',
+             'time'=> 'required|numeric',
+             'ingredients'=> 'required',
+             'directions'=> 'required'
+
+        ]);
         upload::create([
             'name'=>$request->name,
             'images'=>base64_encode(file_get_contents($request->file('images'))),
@@ -26,6 +34,8 @@ class PostController extends Controller
             'difficulty'=>$request->difficulty,
             'approved'=>'0',
         ]);
+        $request->session()->flash('success', 'Recipe has been posted for approval ');
+
         return view('home');
     }
 }

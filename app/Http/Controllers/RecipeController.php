@@ -11,16 +11,20 @@ class RecipeController extends Controller
     public function beginner(){
 
         $beginner= upload::where('difficulty','beginner')->where('approved','1')->get();
-        return view('easy',[$beginner=>'beginner']);
+        return view('beginner',['beginner'=>$beginner]);
     }
 
     public function intermediate(){
-        $intermediate= upload::where('difficulty','intermediate')->where('approved','true')->get();
-        return view('intermediate', [$intermediate=>'intermediate']);
+        $intermediate= upload::where('difficulty','intermediate')->where('approved','1')->get();
+        return view('intermediate', ['intermediate'=>$intermediate]);
     }
 
     public function advanced(){
-        $advanced= upload::where('difficulty','advanced')->where('approved','true')->get();
-        return view('advanced', [$advanced=>'advanced']);
+        $advanced= upload::where('difficulty','advanced')->where('approved','1')->get();
+        return view('advanced', ['advanced'=>$advanced]);
+    }
+    public function dishView($recipe_id){
+        $dish = upload::find($recipe_id);
+        return view('dish',['dish'=>$dish]);
     }
 }

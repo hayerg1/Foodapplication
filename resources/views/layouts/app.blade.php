@@ -18,6 +18,42 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .dropbtn {
+            background-color: white;
+            color: grey;
+            padding: 12px;
+            font-size: 12px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdwn-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdwn-content a:hover {background-color: grey;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: white;}
+    </style>
 </head>
 <body>
     <div id="app">
@@ -40,20 +76,19 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-{{--                     <div class="dropdown">--}}
-{{--                         <button class="dropbtn">Difficulty</button>--}}
-{{--                            <li class="nav-item dropdown">--}}
-{{--                            <a class="dropdown-item" href="{{ route('easy') }}">--}}
-{{--                                Easy--}}
-{{--                            </a>--}}
-{{--                            <a class="dropdown-item" href="{{ route('intermediate') }}">--}}
-{{--                                Intermediate--}}
-{{--                            </a>--}}
-{{--                            <a class="dropdown-item" href="{{ route('intermediate') }}">--}}
-{{--                                Advanced--}}
-{{--                            </a>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="#">Difficulty</a>--}}
 {{--                            </li>--}}
-{{--                     </div>--}}
+                            <div class="dropdown">
+                                <button class="dropbtn">Recipes</button>
+                                <div class="dropdown-content">
+                                    <ul>
+                                        <a href="{{route('recipe.beginner')}}">Beginner</a>
+                                        <a href="{{route('recipe.intermediate')}}">Intermediate</a>
+                                        <a href="{{route('recipe.advanced')}}">Advanced</a>
+                                    </ul>
+                                </div>
+                            </div>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -68,6 +103,16 @@
                                 <input type="text" placeholder="Search">
 
                         @else
+                            <div class="dropdown">
+                                <button class="dropbtn">Recipes</button>
+                                <div class="dropdown-content">
+                                    <ul>
+                                        <a href="{{route('recipe.beginner')}}">Beginner</a>
+                                        <a href="{{route('recipe.intermediate')}}">Intermediate</a>
+                                        <a href="{{route('recipe.advanced')}}">Advanced</a>
+                                    </ul>
+                                </div>
+                            </div>
                             <a class="nav-link" href="{{ route('upload.index') }}">{{ __('Upload') }}</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

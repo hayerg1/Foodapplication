@@ -21,6 +21,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/upload','App\Http\Controllers\Upload\PostController');
+Route::get('/recipe/beginner', 'App\Http\Controllers\RecipeController@beginner')->name('recipe.beginner');
+Route::get('/recipe/intermediate', 'App\Http\Controllers\RecipeController@intermediate')->name('recipe.intermediate');
+Route::get('/recipe/advanced', 'App\Http\Controllers\RecipeController@advanced')->name('recipe.advanced');
+Route::get('/recipe/showdish/{recipe_id}', 'App\Http\Controllers\RecipeController@dishView')->name('recipe.dishView');
+
 Route::resource('/recipe','App\Http\Controllers\RecipeController');
 
 

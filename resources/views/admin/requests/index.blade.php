@@ -5,11 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" style="width: auto; height: auto">
-                    <div class="card-header" style="width: auto; height: auto">Recipes</div>
+                    <div class="card-header" style="width: auto; height: auto">Pending Recipes</div>
 
                     <div class="card-body" style="width:auto; height: auto" >
-
+                        @if($recipes->count()==0)
+                            No recipes waiting for approval
+                        @else
                             <table class="table" style="height: auto; width: auto">
+
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
@@ -54,6 +57,7 @@
 
                                 </tbody>
                             </table>
+                        @endif
                     </div>
                 </div>
             </div>

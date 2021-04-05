@@ -19,7 +19,7 @@ session_start();
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name Of Dish') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}"  autocomplete="name" autofocus>
 
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -33,9 +33,9 @@ session_start();
                                 <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Images') }}</label>
 
                                 <div class="col-md-6">
-                                    <input type="file" id="myFile" name="images">
+                                    <input type="file" id="myFile" name="images" class="@error('images') is-invalid @enderror">
 
-                                    @error('imageController')
+                                    @error('images')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -46,7 +46,7 @@ session_start();
                                 <label for="time" class="col-md-4 col-form-label text-md-right">{{ __('Time to make') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="time" type="text" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required autocomplete="time" autofocus>
+                                    <input id="time" type="text" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}"  autocomplete="time" autofocus>
 
                                     @error('time')
                                     <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@ session_start();
                                 <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('List Of Ingredients') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="ingredients" type="text" class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>
-
+                                    <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}"  autocomplete="ingredients" autofocus>
+                                    </textarea>
                                 @error('ingredients')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -74,8 +74,8 @@ session_start();
                             <label for="directions" class="col-md-4 col-form-label text-md-right">{{ __('Directions') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="directions" type="text" class="form-control @error('directions') is-invalid @enderror" name="directions" value="{{ old('directions') }}" required autocomplete="directions" autofocus>
-
+                                    <textarea id="directions"  class="form-control @error('directions') is-invalid @enderror" name="directions" value="{{ old('directions') }}"  autocomplete="directions" autofocus>
+                                    </textarea>
                                     @error('directions')
                                     <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

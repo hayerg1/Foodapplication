@@ -19,8 +19,8 @@ class CreateRecipeTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('time');
-            $table->string('ingredients');
-            $table->string('directions');
+            $table->longText('ingredients');
+            $table->longText('directions');
             $table->string('difficulty');
             $table->string('approved');
 

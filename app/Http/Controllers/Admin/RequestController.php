@@ -28,12 +28,15 @@ class RequestController extends Controller
      */
     public function approve($recipe_id)
     {
+
         $recipe = upload::find($recipe_id);
         $recipe -> approved ='1';
         $recipe->save();
         return redirect()->route('admin.requests.index');
 
     }
+
+
     /**
      * Remove the specified resource from storage.
      *
