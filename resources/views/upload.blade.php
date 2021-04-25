@@ -41,7 +41,22 @@ session_start();
                                     </span>
                                     @enderror
                                 </div>
-                            </div><div class="form-group row">
+                            </div>
+                            <div class="form-group row">
+
+                                <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video link') }}</label>
+
+                                <div class="col-md-6">
+                                    <input  id="video"  class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}"  autocomplete="video" autofocus>
+                                    </input>
+                                    @error('video')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group row">
 
                                 <label for="time" class="col-md-4 col-form-label text-md-right">{{ __('Time to make') }}</label>
 

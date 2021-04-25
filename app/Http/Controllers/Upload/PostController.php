@@ -20,6 +20,7 @@ class PostController extends Controller
          $request->validate([
             'name' => 'required|unique:recipe|max:255',
             'images' => 'required|mimes:png,jpeg,bmp',
+             'video'=> 'required',
              'time'=> 'required|numeric',
              'ingredients'=> 'required',
              'directions'=> 'required'
@@ -28,6 +29,7 @@ class PostController extends Controller
         upload::create([
             'name'=>$request->name,
             'images'=>base64_encode(file_get_contents($request->file('images'))),
+            'video'=>$request->video,
             'time'=>$request->time,
             'ingredients'=>$request->ingredients,
             'directions'=>$request->directions,

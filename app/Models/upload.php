@@ -12,6 +12,7 @@ class upload extends Model
     protected $fillable =[
         "name",
         "images",
+        "video",
         "time",
         "ingredients",
         "directions",

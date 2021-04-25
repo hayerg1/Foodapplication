@@ -25,6 +25,9 @@ Route::get('/recipe/beginner', 'App\Http\Controllers\RecipeController@beginner')
 Route::get('/recipe/intermediate', 'App\Http\Controllers\RecipeController@intermediate')->name('recipe.intermediate');
 Route::get('/recipe/advanced', 'App\Http\Controllers\RecipeController@advanced')->name('recipe.advanced');
 Route::get('/recipe/showdish/{recipe_id}', 'App\Http\Controllers\RecipeController@dishView')->name('recipe.dishView');
+//Route::get('/recipe/{recipe_id}', 'App\Http\Controllers\RecipeController@recipeView')->name('recipe.recipeView');
+Route::post('recipe/favourite/{recipe_id}', 'App\Http\Controllers\RecipeController@favourite')->name('recipe.favourite');
+Route::get('recipe/viewAllFavourite', 'App\Http\Controllers\RecipeController@viewAllFavourite')->name('recipe.viewAllFavourite');
 
 Route::resource('/recipe','App\Http\Controllers\RecipeController');
 

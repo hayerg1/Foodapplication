@@ -8,7 +8,14 @@ session_start();
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dish') }}</div>
+                <div class="card-header">{{$dish->name}}
+                    @if(auth()->user())
+                    <form action="{{route('recipe.favourite',$dish->id)}}" method="post">
+                        @csrf
+                    <button  class="btn-primary" type="submit" style="width: 100px; height:25px; display: inline; float: right; background: grey;  "> Favourite Dish</button>
+                    </form>
+                    @endif
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -20,22 +27,25 @@ session_start();
                     <table class="table" style="height: auto; width: auto">
                         <thead>
                         <tr>
-                            <th scope="col">Dish Name</th>
                             <th scope="col">Images</th>
                             <th scope="col">Time to make</th>
                             <th scope="col">List of Ingredients</th>
-                            <th scope="col">Directions</th>
                         </tr>
                         </thead>
                         <tbody>
-
                             <tr>
-                                <td>{{$dish->name}}</td>
-                                <td><img src="data:image/jpeg;base64, {{$dish->images}} " width="100" height="100"/></td>
+                                <td><img src="data:image/jpeg;base64, {{$dish->images}} " width="200" height="200"/></td>
                                 <td>{{$dish->time}}</td>
                                 <td>{{$dish->ingredients}}</td>
-                                <td>{{$dish->directions}}</td>
                             </tr>
+                            <tr>
+                                <th scope="col">Video</th>
+                                <th scope="col">Directions</th>
+                            </tr>
+                        <tr>
+                            <td><iframe src="{{$dish->video}}" ></iframe></td>
+                            <td>{{$dish->directions}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

@@ -76,19 +76,22 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-{{--                            <li class="nav-item">--}}
-{{--                                <a class="nav-link" href="#">Difficulty</a>--}}
-{{--                            </li>--}}
-                            <div class="dropdown">
-                                <button class="dropbtn">Recipes</button>
-                                <div class="dropdown-content">
-                                    <ul>
-                                        <a href="{{route('recipe.beginner')}}">Beginner</a>
-                                        <a href="{{route('recipe.intermediate')}}">Intermediate</a>
-                                        <a href="{{route('recipe.advanced')}}">Advanced</a>
-                                    </ul>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Recipes
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('recipe.beginner') }}">
+                                        Beginner
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('recipe.intermediate') }}">
+                                        Intermediate
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('recipe.advanced') }}">
+                                        Advanced
+                                    </a>
                                 </div>
-                            </div>
+                            </li>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -98,22 +101,31 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                </li>git
                             @endif
                                 <input type="text" placeholder="Search">
 
                         @else
-                            <div class="dropdown">
-                                <button class="dropbtn">Recipes</button>
-                                <div class="dropdown-content">
-                                    <ul>
-                                        <a href="{{route('recipe.beginner')}}">Beginner</a>
-                                        <a href="{{route('recipe.intermediate')}}">Intermediate</a>
-                                        <a href="{{route('recipe.advanced')}}">Advanced</a>
-                                    </ul>
-                                </div>
-                            </div>
+                            <a class="nav-link" href="{{ route('recipe.viewAllFavourite') }}">{{ __('Favourites') }}</a>
+
                             <a class="nav-link" href="{{ route('upload.index') }}">{{ __('Upload') }}</a>
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Recipes
+                                    </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('recipe.beginner') }}">
+                                      Beginner
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('recipe.intermediate') }}">
+                                        Intermediate
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('recipe.advanced') }}">
+                                        Advanced
+                                    </a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

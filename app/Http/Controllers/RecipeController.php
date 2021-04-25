@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\favourite;
 use App\Models\upload;
 use Illuminate\Http\Request;
 
@@ -27,4 +28,32 @@ class RecipeController extends Controller
         $dish = upload::find($recipe_id);
         return view('dish',['dish'=>$dish]);
     }
+    public function favourite($recipe_id){
+        if(favourite::where('user_id', auth()->user()->id)->first()==null){
+            favourite::create([
+                'user_id'=>auth()->user()->id,
+                'recipe_id'=>$recipe_id
+            ]);
+        }else{
+            $kb =favourite::where('user_id', auth()->user()->id)->first();
+            $kb->recipe_id=$recipe_id;
+            $kb->save();
+
+        }
+
+        $favourites= favourite::where('user_id', auth()->user()->id)->get()->pluck('recipe_id');
+        $dishes=upload::whereIn('id',$favourites)->get();
+        return view('favourite', ['favourites'=>$dishes]);
+    }
+
+    public function viewAllFavourite(){
+        $favourites= favourite::where('user_id', auth()->user()->id)->get()->pluck('recipe_id');
+        $dishes=upload::whereIn('id',$favourites)->get();
+        return view('favourite', ['favourites'=>$dishes]);
+
+    }
+//    public function recipeView($recipe_id){
+//        $dish = upload::find($recipe_id);
+//        return view('admin/requests/recipeView',['dish'=>$dish]);
+//    }
 }
