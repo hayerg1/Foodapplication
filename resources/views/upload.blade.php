@@ -48,7 +48,6 @@ session_start();
 
                                 <div class="col-md-6">
                                     <input  id="video"  class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}"  autocomplete="video" autofocus>
-                                    </input>
                                     @error('video')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

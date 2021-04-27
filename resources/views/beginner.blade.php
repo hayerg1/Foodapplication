@@ -12,16 +12,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                         <table class="table" style="height: auto; width: auto">
-{{--                            <thead>--}}
-{{--                            <tr>--}}
-{{--                                <th scope="col">Dish Name</th>--}}
-{{--                                <th scope="col">Images</th>--}}
-{{--                                <th scope="col">Time to make</th>--}}
-
-{{--                            </tr>--}}
-{{--                            </thead>--}}
                             <tbody>
                             @foreach($beginner as $b)
                                 <tr>
@@ -29,10 +20,8 @@
                                     <td><a href="{{route('recipe.dishView',$b->id)}}">
                                             {{$b->name}}</a><br/>
                                     Time to make (in minutes):{{$b->time}}</td>
-
                                 </tr>
                             @endforeach
-
                             </tbody>
                         </table>
                 </div>

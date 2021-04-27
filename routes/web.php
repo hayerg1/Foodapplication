@@ -28,7 +28,8 @@ Route::get('/recipe/showdish/{recipe_id}', 'App\Http\Controllers\RecipeControlle
 //Route::get('/recipe/{recipe_id}', 'App\Http\Controllers\RecipeController@recipeView')->name('recipe.recipeView');
 Route::post('recipe/favourite/{recipe_id}', 'App\Http\Controllers\RecipeController@favourite')->name('recipe.favourite');
 Route::get('recipe/viewAllFavourite', 'App\Http\Controllers\RecipeController@viewAllFavourite')->name('recipe.viewAllFavourite');
-
+Route::post('recipe/search','App\Http\Controllers\RecipeController@search')->name('recipe.search');
+Route::get('/search','App\Http\Controllers\RecipeController@showRecipes');
 Route::resource('/recipe','App\Http\Controllers\RecipeController');
 
 

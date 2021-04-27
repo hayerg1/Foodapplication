@@ -92,6 +92,7 @@
                                     </a>
                                 </div>
                             </li>
+
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -101,9 +102,13 @@
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>git
+                                </li>
                             @endif
-                                <input type="text" placeholder="Search">
+                            <form class="form-inline my-2 my-lg-0" method="post" action="{{route('recipe.search')}}">
+                                @csrf
+                                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" >
+                                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                            </form>
 
                         @else
                             <a class="nav-link" href="{{ route('recipe.viewAllFavourite') }}">{{ __('Favourites') }}</a>
@@ -126,6 +131,7 @@
                                     </a>
                                 </div>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle float-left" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -144,12 +150,19 @@
                                         <a class="dropdown-item" href="{{ route('admin.requests.index') }}">
                                             Pending Requests
                                         </a>
+
                                     @endcan
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
                                 </div>
                             </li>
+                            <form class="form-inline my-2 my-lg-0" method="post" action="{{route('recipe.search')}}">
+                                @csrf
+                                <input name="search" class="form-control mr-sm-2" type="search" placeholder="Search" >
+                                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+                            </form>
                         @endguest
                     </ul>
                 </div>

@@ -5,7 +5,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card" style="width: auto; height: auto">
+                <div class="col-12">
+                <div class="card col-12" style="width: auto; height: auto">
                     <div class="card-header" style="width: auto; height: auto">Pending Recipes</div>
 
                     <div class="card-body" style="width:auto; height: auto" >
@@ -21,7 +22,7 @@
                                     <th scope="col">Video</th>
                                     <th scope="col">Time to make</th>
                                     <th scope="col">List of Ingredients</th>
-                                    <th scope="col">Directions</th>
+                                    <th scope="col-12">Directions</th>
                                     <th scope="col">Difficulty</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -36,7 +37,7 @@
                                     <td><iframe src="{{$dish->video}}" ></iframe></td>
                                     <td>{{$dish->time}}</td>
                                     <td>{{$dish->ingredients}}</td>
-                                    <td>{{$dish->directions}}</td>
+                                    <div style="width: auto" {{$dish->directions}} ></div>
                                     <td>{{$dish->difficulty}}</td>
                                     <td>
                                         <form action="{{route('admin.requests.approve', ->id)}}" method="POST" class="float-left">
@@ -61,7 +62,9 @@
                             </table>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </div>
 @endsection
+

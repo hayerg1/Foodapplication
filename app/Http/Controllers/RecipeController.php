@@ -52,6 +52,15 @@ class RecipeController extends Controller
         return view('favourite', ['favourites'=>$dishes]);
 
     }
+    public function search(Request $request){
+        $search_text = $request->get('search');
+        $dishes = upload::where('name','LIKE','%'.$search_text.'%')->get();
+        return view('search',['recipes'=>$dishes]);
+    }
+    public function showRecipes(){
+        $recipes = upload::all();
+        return view('search',['recipes'=>$recipes]);
+    }
 //    public function recipeView($recipe_id){
 //        $dish = upload::find($recipe_id);
 //        return view('admin/requests/recipeView',['dish'=>$dish]);
