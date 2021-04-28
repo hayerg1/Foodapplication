@@ -6,23 +6,24 @@ use App\Models\favourite;
 use App\Models\upload;
 use Illuminate\Http\Request;
 
+
 class RecipeController extends Controller
 {
     //
     public function beginner(){
 
-        $beginner= upload::where('difficulty','beginner')->where('approved','1')->get();
-        return view('beginner',['beginner'=>$beginner]);
+        $beginner= upload::where('difficulty','beginner')->where('approved','1');
+        return view('beginner',['beginner'=>$beginner->paginate(4)]);
     }
 
     public function intermediate(){
-        $intermediate= upload::where('difficulty','intermediate')->where('approved','1')->get();
-        return view('intermediate', ['intermediate'=>$intermediate]);
+        $intermediate= upload::where('difficulty','intermediate')->where('approved','1');
+        return view('intermediate', ['intermediate'=>$intermediate->paginate(4)]);
     }
 
     public function advanced(){
-        $advanced= upload::where('difficulty','advanced')->where('approved','1')->get();
-        return view('advanced', ['advanced'=>$advanced]);
+        $advanced= upload::where('difficulty','advanced')->where('approved','1');
+        return view('advanced', ['advanced'=>$advanced->paginate(4)]);
     }
     public function dishView($recipe_id){
         $dish = upload::find($recipe_id);

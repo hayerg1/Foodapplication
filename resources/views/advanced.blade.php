@@ -12,32 +12,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     <table class="table" style="height: auto; width: auto">
-                        <thead>
-                        <tr>
-                            <th scope="col">Dish Name</th>
-                            <th scope="col">Images</th>
-                            <th scope="col">Time to make</th>
-
-                        </tr>
-                        </thead>
                         <tbody>
                         @foreach($advanced as $b)
-
                             <tr>
-                                <td><a href="{{route('recipe.dishView',$b->id)}}">{{$b->name}}</a></td>
-                                <td><img src="data:image/jpeg;base64, {{$b->images}} " width="100" height="100"/></td>
-                                <td>{{$b->time}}</td>
-
-
-
-
+                                <td><img src="data:image/jpeg;base64, {{$b->images}} " width="300" height="200"/></td>
+                                <td><a href="{{route('recipe.dishView',$b->id)}}">
+                                        {{$b->name}}</a><br/>
+                                    Time to make (in minutes):{{$b->time}}</td>
                             </tr>
                         @endforeach
-
                         </tbody>
                     </table>
+                    {{$advanced->links()}}
                 </div>
             </div>
         </div>

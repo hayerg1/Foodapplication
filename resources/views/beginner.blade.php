@@ -16,14 +16,15 @@
                             <tbody>
                             @foreach($beginner as $b)
                                 <tr>
-                                    <td><img src="data:image/jpeg;base64, {{$b->images}} " width="200" height="200"/></td>
+                                    <td><img src="data:image/jpeg;base64, {{$b->images}} " width="300" height="200"/></td>
                                     <td><a href="{{route('recipe.dishView',$b->id)}}">
                                             {{$b->name}}</a><br/>
-                                    Time to make (in minutes):{{$b->time}}</td>
+                                    Time to make :{{$b->time}} Minutes</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
+                    {{$beginner->links()}}
                 </div>
             </div>
         </div>
