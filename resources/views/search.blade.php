@@ -17,7 +17,7 @@
                                 <td><img src="data:image/jpeg;base64, {{$b->images}} " width="200" height="200"/></td>
                                 <td><a href="{{route('recipe.dishView',$b->id)}}">
                                         {{$b->name}}</a><br/>
-                                    Time to make (in minutes):{{$b->time}}<br/>
+                                    Time to make :{{$b->time}} minutes<br/>
                                 Difficulty :{{$b->difficulty}}</td>
 
 

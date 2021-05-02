@@ -38,6 +38,6 @@ class PostController extends Controller
         ]);
         $request->session()->flash('success', 'Recipe has been posted for approval ');
 
-        return view('home');
+        return view('upload');
     }
 }
