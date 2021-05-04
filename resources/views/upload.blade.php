@@ -44,7 +44,7 @@ session_start();
                             </div>
                             <div class="form-group row">
 
-                                <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video link (Embedded URLgo)') }}</label>
+                                <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video link (Embedded URL)') }}</label>
 
                                 <div class="col-md-6">
                                     <input  id="video"  class="form-control @error('video') is-invalid @enderror" name="video" value="{{ old('video') }}"  autocomplete="video" autofocus>
